@@ -9,10 +9,10 @@ let cargarDatos = () => {
         .then(personajes => {
             console.log(personajes)
 
-            personajes.results.forEach(personaje => {
+            personajes.results.forEach(personaje => { // En cada iteración de foeEach nos va a dar los datos de cada personaje
                 console.log(personaje)
 
-                nombres.push(personaje.name) //
+                nombres.push(personaje.name) // Obtenemos el nombre del personaje y lo meteemos en el array nombres
                 numFilms.push(personaje.films.length)
             });
             pintarDatos()

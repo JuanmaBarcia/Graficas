@@ -1,70 +1,106 @@
-let apiKey = "d29114ce0d3d754700c440e4af5cd481"
-let city = "London"
-// Gráfica1
-let temperatura  
+let apiKey = "d7a661ea96306817ac50a6068ff7d4bd"
+let ciudad
+
+let temperatura
 let sensTermica
 let tempMinima
 let tempMaxima
+let velocidadViento
+let nivelMar
+let nivelSuelo
 
-function cargarDatos() {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
+let temp
+let wind
+let levels
+
+document.getElementById("ciudadForm").addEventListener("submit", function(e) {
+    e.preventDefault()
+    if (temp && wind && levels) {
+        temp.destroy();
+        wind.destroy();
+        levels.destroy();
+    }
+    ciudad = e.target.elements.ciudad.value
+    console.log(ciudad)
+
+    cargarDatos(ciudad, apiKey)
+})
+
+let cargarDatos = async(city, key) => {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${key}`)
         .then(res => res.json())
-        .then(data=>{
-            console.log(data)
-            console.log(data.main)
-            console.log(data.main.temp)
-            temperatura = data.main.temp
-            console.log (temperatura)
-            sensTermica = data.main.feels_like
-            tempMinima = data.main.temp_min
-            tempMaxima = data.main.temp_max
-            pintarTabla()
+        .then(data => {
+
+            temperatura = data.main.temp ? data.main.temp : 0
+            sensTermica = data.main.feels_like ? data.main.feels_like : 0
+            tempMinima = data.main.temp_min ? data.main.temp_min : 0
+            tempMaxima = data.main.temp_max ? data.main.temp_max : 0
+            velocidadViento = data.wind.speed ? data.wind.speed : 0
+            nivelMar = data.main.sea_level ? data.main.sea_level : 0
+            nivelSuelo = data.main.grnd_level ? data.main.grnd_level : 0
+
+            pintarTemperatura()
         })
 }
 
-cargarDatos()
-
-function pintarTabla(){
-    const labels = ["Temperatura","Sesación térmica","Temperatura mínima","Temperatura máxima"];
-    const data = {
-      labels: labels,
-      datasets: [{
-        label: 'Temperaturas',
-        data: [temperatura,sensTermica,tempMinima,tempMaxima],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 205, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          
-        ],
-        borderColor: [
-          'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          
-        ],
-        borderWidth: 1
-      }]
+function pintarTemperatura() {
+    const dataTemp = {
+        labels: ["Temperatura", "Sesación térmica", "Temperatura mínima", "Temperatura máxima"],
+        datasets: [{
+            label: `Temperaturas en ${ciudad}`,
+            data: [temperatura, sensTermica, tempMinima, tempMaxima],
+            backgroundColor: ['rgba(255, 159, 132, 0.2)'],
+            borderColor: ['rgb(255, 159, 132)'],
+            borderWidth: 1
+        }]
     };
-    
-    const config = {
+    const configTemp = {
         type: 'bar',
-        data: data,
+        data: dataTemp,
+    };
+    temp = new Chart(
+        document.getElementById('temp'),
+        configTemp
+    );
+
+    const dataWind = {
+        labels: [`Velocidad del viento`],
+        datasets: [{
+            label: `Velocidad del viento en ${ciudad}`,
+            data: [velocidadViento],
+            backgroundColor: ['rgba(25, 99, 132, 0.2)'],
+            borderColor: ['rgb(25, 99, 132)'],
+            borderWidth: 1
+        }]
+    };
+    const configWind = {
+        type: 'bar',
+        data: dataWind,
         options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        },
-      };
-    
-     let myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-      );
+            indexAxis: 'y',
+        }
+    };
+    wind = new Chart(
+        document.getElementById('wind'),
+        configWind
+    );
 
+    const dataLevels = {
+        labels: [`Nivel del mar`, `Nivel del suelo`],
+        datasets: [{
+            label: `Niveles del terreno en ${ciudad}`,
+            data: [nivelMar, nivelSuelo],
+            backgroundColor: ['rgba(200, 199, 12, 0.2)'],
+            borderColor: ['rgb(200, 199, 12)'],
+            borderWidth: 1
+        }]
+    };
+    const configLevels = {
+        type: 'bar',
+        data: dataLevels,
+    };
+    levels = new Chart(
+        document.getElementById('levels'),
+        configLevels
+    );
 }
-
