@@ -1,0 +1,33 @@
+h1 {
+    text-align: center;
+}
+
+#mapid {
+    height: 600px;
+}
+
+form#formCity {
+    text-align: center;
+}
+
+label {
+    display: block;
+    font-size: 3rem;
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+
+input {
+    width: 25%;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+input[type="submit"] {
+    width: 25%;
+    padding: 10px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}

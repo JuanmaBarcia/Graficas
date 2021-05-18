@@ -56,42 +56,26 @@ function pintarTemperatura() {
         datasets: [{
             label: 'Temperatura',
             data: [temperatura],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-                'rgb(255, 99, 132)',
-            ],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgb(255, 99, 132)'],
             borderWidth: 1
         }, {
             label: 'Sensación términca',
             data: [sensTermica],
-            backgroundColor: [
-                'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-                'rgb(255, 159, 64)',
-            ],
+            backgroundColor: ['rgba(255, 159, 64, 0.2)'],
+            borderColor: ['rgb(255, 159, 64)'],
             borderWidth: 1
         }, {
             label: 'Temperatura mínima',
             data: [tempMinima],
-            backgroundColor: [
-                'rgba(255, 205, 86, 0.2)',
-            ],
-            borderColor: [
-                'rgb(255, 205, 86)',
-            ],
+            backgroundColor: ['rgba(255, 205, 86, 0.2)'],
+            borderColor: ['rgb(255, 205, 86)'],
             borderWidth: 1
         }, {
             label: 'Temperatura máxima',
             data: [tempMaxima],
-            backgroundColor: [
-                'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-                'rgb(75, 192, 192)',
-            ],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)'],
+            borderColor: ['rgb(75, 192, 192)'],
             borderWidth: 1
         }]
     };
@@ -126,13 +110,8 @@ function pintarViento() {
         datasets: [{
             label: 'Viento',
             data: [velocidadViento],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-
-            ],
-            borderColor: [
-                'rgb(255, 99, 132)',
-            ],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgb(255, 99, 132)'],
             borderWidth: 1
         }]
     };
@@ -168,28 +147,14 @@ function pintarPresion() {
         datasets: [{
             label: 'Presión Atmosférica a nivel del mar',
             data: [presionMar],
-            backgroundColor: [
-
-                'rgba(255, 205, 86, 0.2)',
-
-            ],
-            borderColor: [
-
-                'rgb(255, 205, 86)',
-            ],
+            backgroundColor: ['rgba(255, 205, 86, 0.2)'],
+            borderColor: ['rgb(255, 205, 86)'],
             borderWidth: 1
         }, {
             label: 'Presión Atmosférica a nivel del suelo',
             data: [presionSuelo],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-
-
-            ],
-            borderColor: [
-                'rgb(255, 99, 132)',
-
-            ],
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgb(255, 99, 132)'],
             borderWidth: 1
         }]
     }
