@@ -10,22 +10,24 @@
 </head>
 
 <body>
-    <form id="ciudadForm">
-        <label for="ciudad">Ciudad</label><br>
-        <input type="text" name="ciudad" id="ciudad"><br>
-        <input type="submit" value="Mostrar gráficas">
+
+    <form id="formCity">
+        <label for="city">ciudad</label>
+        <input type="text" name="city">
+        <input type="submit" value="Enviar">
     </form>
-    <div id="graficas">
-        <div>
-            <canvas id="temp"></canvas>
-        </div>
-        <div>
-            <canvas id="wind"></canvas>
-        </div>
-        <div>
-            <canvas id="levels"></canvas>
-        </div>
+    <div>
+        <canvas id="myChart"></canvas>
     </div>
+    <div>
+        <canvas id="myChartViento"></canvas>
+    </div>
+    <div>
+        <canvas id="myChartPresion"></canvas>
+    </div>
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
