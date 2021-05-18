@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,27 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <form id="formCity">
+        <label for="city">ciudad</label>
+        <input type="text" name="city">
+        <input type="submit" value="Enviar">
+    </form>
     <div>
         <canvas id="myChart"></canvas>
-      </div>
-      
+    </div>
+    <div>
+        <canvas id="myChartViento"></canvas>
+    </div>
+    <div>
+        <canvas id="myChartPresion"></canvas>
+    </div>
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
